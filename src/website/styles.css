@@ -88,3 +88,19 @@ body {
     background-color: #035641;
   }
   
+  .message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: none;
+  }
+  
+  .message.success {
+    background-color: #28a745;
+  }
+  
+  .message.error {
+    background-color: #dc3545;
+  }

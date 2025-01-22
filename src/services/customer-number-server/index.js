@@ -1,31 +1,14 @@
-// const express = require('express');
-// import {express} from '../customer-number-server/node_modules/express';
-// const app = express();
-
-// const PORT = 3000;
-console.log("Hello World");
-// app.get('/', (req, res) => {
-//   res.send('Welcome to Customer Number Server!');
- 
-// });
-// import { getCustomers } from './customers.js';
-
-// console.log(getCustomers());
-
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);  
-
-// });
-
-
 import Fastify from 'fastify';
 import { getCustomers, addCustomer, getCustomerById, deleteCustomer } from './customers.js';
+import cors from '@fastify/cors';
 
 const fastify = Fastify({ logger: true });
 
 fastify.get('/customers', (request, reply) => {
   reply.send(getCustomers());
+});
+fastify.register(cors, {
+  origin: '*'
 });
 
 fastify.get('/customers/:id', (request, reply) => {
@@ -50,3 +33,16 @@ fastify.listen({ port: 3000 }, (err, address) => {
   }
   fastify.log.info(`Server listening on ${address}`);
 });
+
+const customerSchema = {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    name: { type: 'string' },
+    number: { type: 'string', pattern: '^ETUR-CN-\\d+$' }
+  },
+  required: ['id', 'name', 'number']
+};
+
+
+
