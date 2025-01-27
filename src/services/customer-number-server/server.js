@@ -18,6 +18,9 @@ fastify.listen({ port: 3000 }, (err, address) => {
 
 
 const reports = []; // Temporary Database
+
+
+
 // Create New Report
 fastify.post('/reports', async (request, reply) => {
     const reportData = request.body;
