@@ -3,55 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Number Management System</title>
+  <title> Customer Number Management System </title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- page header -->
+  <!-- page header  -->
   <header>
-    <h1>Customer Number Management System</h1>
+    <h1> Customer Number Management System  </h1>
   </header>
 
-  <!-- page body -->
+  <!--  page body -->
   <main>
-    <!-- display all customers -->
+    <!-- desplay all customers -->
     <section id="customer-list">
-      <h2>All Customers</h2>
-      <div class="cards-container">
-        <!-- customer card -->
-        <div class="customer-card">
-          <p>name: John Smith</p>
-          <p>Customer Number: ETUR-CN-12345</p>
-        </div>
-      </div>
+      <h2> all customers </h2>
+      <div id="cards-container" class="cards-container"></div>
     </section>
 
-    <!-- add customer -->
+    <!-- add a new customer -->
     <section id="add-customer">
-      <h2>Add New Customer</h2>
+      <h2>add a new customer  </h2>
       <form id="customer-form">
-        <label for="customer-name">Customer Name:</label>
+        <label for="customer-name">Customer name  :</label>
         <input type="text" id="customer-name" name="customer-name" required>
-        <label for="customer-number">Kundennummer:</label>
+        <label for="customer-number"> Customer Number :</label>
         <input type="text" id="customer-number" name="customer-number" required>
-        <button type="submit">Add Customer</button>
+        <button type="submit">Add Customer </button>
       </form>
+      <p id="add-message" class="message"></p>
     </section>
 
-    <!-- Verify Customer Number -->
+    <!--  Verify Customer Number   -->
     <section id="validate-customer">
-      <h2>Verify Customer Number</h2>
+      <h2> Verify Customer Number  </h2>
       <form id="validate-form">
-        <label for="validate-number"> Enter Customer Number:</label>
+        <label for="validate-number"> Enter Customer Number :</label>
         <input type="text" id="validate-number" name="validate-number" required>
         <button type="submit">Verify</button>
       </form>
+      <p id="validate-message" class="message"></p>
     </section>
   </main>
 
-  <!-- page footer -->
+  <!-- page footer  -->
   <footer>
-    <p>© 2025 All Rights Reserved</p>
+    
   </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
