@@ -1,5 +1,6 @@
 // index.js
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 import {
     getAllCustomers,
     createCustomer,
@@ -8,8 +9,14 @@ import {
     validateCustomerNumber
 } from './../ETUR01/src/services/customer-number-server/customers.js';
 
+
+
 const fastify = Fastify({ logger: true });
 
+// add  CORS
+fastify.register(cors, {
+    origin: '*', // )
+});
 // تعريف مسارات العملاء
 fastify.get('/customers', async (request, reply) => {
     return getAllCustomers();

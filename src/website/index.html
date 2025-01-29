@@ -3,60 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Customer Number System - ETUR </title>
+    <title>نظام أرقام العملاء - ETUR للبرمجيات</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Customer Number System - ETUR </h1>
+        <h1>نظام أرقام العملاء - ETUR للبرمجيات</h1>
     </header>
 
     <main>
         <section id="add-customer">
-            <h2>Add a New Customer </h2>
+            <h2>إضافة عميل جديد</h2>
             <form id="customer-form">
-                <label for="customer-name">Customer name:</label>
+                <label for="customer-name">اسم العميل:</label>
                 <input type="text" id="customer-name" name="customer-name" required>
 
-                <label for="customer-number">Customer Number:</label>
+                <label for="customer-number">رقم العميل:</label>
                 <input type="text" id="customer-number" name="customer-number" required>
 
-                <button type="submit">Add Customer</button>
+                <button type="submit">إضافة عميل</button>
             </form>
         </section>
 
         <section id="check-customer">
-            <h2>Verify Customer Number</h2>
+            <h2>التحقق من رقم العميل</h2>
             <form id="check-form">
-                <label for="check-number">Customer Number:</label>
+                <label for="check-number">رقم العميل:</label>
                 <input type="text" id="check-number" name="check-number" required>
 
-                <button type="submit">Verify</button>
+                <button type="submit">تحقق</button>
             </form>
             <p id="check-result"></p>
         </section>
 
         <section id="customer-list">
-            <h2>Customer list </h2>
+            <h2>قائمة العملاء</h2>
             <div class="customer-cards">
-                <!-- desplay customers cards -->
-                <div class="customer-cards">
-                    <div class="customer-card">
-                        <h3>Customer Name: Mohamed Ahmen</h3>
-                        <p>Customer Number: 12345</p>
-                    </div>
-                    <div class="customer-card">
-                        <h3>Customer Name: Mohamed Ahmen</h3>
-                        <p>Customer Number: 678910</p>
-                    </div>
-    
-                </div>
+                <!-- هنا سيتم عرض بطاقات العملاء -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 ETUR </p>
+        <p>© 2023 ETUR للبرمجيات. جميع الحقوق محفوظة.</p>
     </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
