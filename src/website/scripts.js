@@ -1,7 +1,7 @@
 // script.js
 const API_URL = 'http://localhost:3000';
 
-// عناصر واجهة المستخدم
+// UI elements
 const customerForm = document.getElementById('customer-form');
 const customerNameInput = document.getElementById('customer-name');
 const customerNumberInput = document.getElementById('customer-number');
@@ -10,7 +10,7 @@ const checkForm = document.getElementById('check-form');
 const checkNumberInput = document.getElementById('check-number');
 const checkResult = document.getElementById('check-result');
 
-// إضافة عميل جديد
+// Add a new customer
 customerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = customerNameInput.value;
@@ -23,30 +23,30 @@ customerForm.addEventListener('submit', async (e) => {
             body: JSON.stringify({ name, customerNumber }),
         });
         if (response.ok) {
-            alert('تم إنشاء العميل بنجاح!');
+            alert('Customer created successfully!');
             customerNameInput.value = '';
             customerNumberInput.value = '';
             fetchAndDisplayCustomers();
         } else {
-            alert('حدث خطأ أثناء إنشاء العميل.');
+            alert('An error occurred while creating the customer.');
         }
     } catch (error) {
         console.error('Error:', error);
     }
 });
 
-// عرض جميع العملاء
+// Display all customers
 async function fetchAndDisplayCustomers() {
     try {
         const response = await fetch(`${API_URL}/customers`);
         const customers = await response.json();
-        customerList.innerHTML = ''; // مسح القائمة الحالية
+        customerList.innerHTML = ''; // Clear current list
         customers.forEach(customer => {
             const card = document.createElement('div');
             card.className = 'customer-card';
             card.innerHTML = `
-                <h3>اسم العميل: ${customer.name}</h3>
-                <p>رقم العميل: ${customer.customerNumber}</p>
+                <h3>Customer Nam: ${customer.name}</h3>
+                <p>Customer Number: ${customer.customerNumber}</p>
             `;
             customerList.appendChild(card);
         });
@@ -55,7 +55,7 @@ async function fetchAndDisplayCustomers() {
     }
 }
 
-// التحقق من رقم العميل
+// Validate customer number
 checkForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const customerNumber = checkNumberInput.value;
@@ -68,14 +68,14 @@ checkForm.addEventListener('submit', async (e) => {
         });
         const result = await response.json();
         if (result.isValid) {
-            checkResult.textContent = result.exists ? 'رقم العميل صالح ويوجد في النظام.' : 'رقم العميل صالح ولكنه غير موجود في النظام.';
+            checkResult.textContent = result.exists ? 'The customer number is valid and exists in the system.' : 'The customer number is valid but does not exist in the system.';
         } else {
-            checkResult.textContent = 'رقم العميل غير صالح.';
+            checkResult.textContent = 'The customer number is invalid.';
         }
     } catch (error) {
         console.error('Error:', error);
     }
 });
 
-// تحميل العملاء عند فتح الصفحة
+// Load customers when the page opens
 document.addEventListener('DOMContentLoaded', fetchAndDisplayCustomers);

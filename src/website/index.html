@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام أرقام العملاء - ETUR للبرمجيات</title>
+    <title>Customer Number System - ETUR </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>نظام أرقام العملاء - ETUR للبرمجيات</h1>
+        <h1>Customer Number System - ETUR </h1>
     </header>
 
     <main>
         <section id="add-customer">
-            <h2>إضافة عميل جديد</h2>
+            <h2>Add a New Customer</h2>
             <form id="customer-form">
-                <label for="customer-name">اسم العميل:</label>
+                <label for="customer-name">Customer Name</label>
                 <input type="text" id="customer-name" name="customer-name" required>
 
-                <label for="customer-number">رقم العميل:</label>
+                <label for="customer-number">Customer Number</label>
                 <input type="text" id="customer-number" name="customer-number" required>
 
-                <button type="submit">إضافة عميل</button>
+                <button type="submit">Add A Customer</button>
             </form>
         </section>
 
         <section id="check-customer">
-            <h2>التحقق من رقم العميل</h2>
+            <h2>Customer Number Validation</h2>
             <form id="check-form">
-                <label for="check-number">رقم العميل:</label>
+                <label for="check-number">Customer Naumber</label>
                 <input type="text" id="check-number" name="check-number" required>
 
-                <button type="submit">تحقق</button>
+                <button type="submit">Validation</button>
             </form>
             <p id="check-result"></p>
         </section>
@@ -39,13 +39,13 @@
         <section id="customer-list">
             <h2>قائمة العملاء</h2>
             <div class="customer-cards">
-                <!-- هنا سيتم عرض بطاقات العملاء -->
+                <!-- Customer cards will be displayed here -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2023 ETUR للبرمجيات. جميع الحقوق محفوظة.</p>
+        <p>© 2023 ETUR </p>
     </footer>
 
     <script src="scripts.js"></script>

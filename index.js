@@ -15,9 +15,9 @@ const fastify = Fastify({ logger: true });
 
 // add  CORS
 fastify.register(cors, {
-    origin: '*', // )
+    origin: '*', //Allows all origins  )
 });
-// تعريف مسارات العملاء
+// Define customer routes
 fastify.get('/customers', async (request, reply) => {
     return getAllCustomers();
 });
