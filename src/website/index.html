@@ -3,53 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام أرقام العملاء - ETUR للبرمجيات</title>
+    <title>  Customer Number System - ETUR </title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>نظام أرقام العملاء - ETUR للبرمجيات</h1>
+        <h1>Customer Number System - ETUR </h1>
     </header>
 
     <main>
         <section id="add-customer">
-            <h2>إضافة عميل جديد</h2>
+            <h2>Add a New Customer </h2>
             <form id="customer-form">
-                <label for="customer-name">اسم العميل:</label>
+                <label for="customer-name">Customer name:</label>
                 <input type="text" id="customer-name" name="customer-name" required>
 
-                <label for="customer-number">رقم العميل:</label>
+                <label for="customer-number">Customer Number:</label>
                 <input type="text" id="customer-number" name="customer-number" required>
 
-                <button type="submit">إضافة عميل</button>
+                <button type="submit">Add Customer</button>
             </form>
         </section>
 
         <section id="check-customer">
-            <h2>التحقق من رقم العميل</h2>
+            <h2>Verify Customer Number</h2>
             <form id="check-form">
-                <label for="check-number">رقم العميل:</label>
+                <label for="check-number">Customer Number:</label>
                 <input type="text" id="check-number" name="check-number" required>
 
-                <button type="submit">تحقق</button>
+                <button type="submit">Verify</button>
             </form>
             <p id="check-result"></p>
         </section>
 
         <section id="customer-list">
-            <h2>قائمة العملاء</h2>
+            <h2>Customer list </h2>
             <div class="customer-cards">
-                <!-- هنا سيتم عرض بطاقات العملاء -->
+                <!-- desplay customers cards -->
                 <div class="customer-cards">
                     <div class="customer-card">
-                        <h3>اسم العميل: محمد أحمد</h3>
-                        <p>رقم العميل: 12345</p>
+                        <h3>Customer Name: Mohamed Ahmen</h3>
+                        <p>Customer Number: 12345</p>
                     </div>
                     <div class="customer-card">
-                        <h3>اسم العميل: علي محمود</h3>
-                        <p>رقم العميل: 67890</p>
+                        <h3>Customer Name: Mohamed Ahmen</h3>
+                        <p>Customer Number: 678910</p>
                     </div>
-                    <!-- يمكنك إضافة المزيد من البطاقات هنا -->
+    
                 </div>
             </div>
         </section>
