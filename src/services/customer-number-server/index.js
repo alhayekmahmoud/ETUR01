@@ -1,11 +1,3 @@
-import Fastify from "fastify";
-import { routes } from "./customers.js";
-import cors from "@fastify/cors";
-
-const fastify = Fastify({ logger: true });
-
-// تسجيل المسارات
-fastify.register(routes);
 
 fastify.register(cors, {
   origin: "*", // السماح بجميع المصادر
@@ -35,6 +27,3 @@ const start = async () => {
     fastify.log.error(err);
     process.exit(1);
   }
-};
-
-start();
