@@ -1,59 +1,62 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Number Management System</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام أرقام العملاء - ETUR للبرمجيات</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- page header -->
-  <header>
-    <h1>Customer Number Management System</h1>
-  </header>
+    <header>
+        <h1>نظام أرقام العملاء - ETUR للبرمجيات</h1>
+    </header>
 
-  <!-- page body -->
-  <main>
-    <!-- display all customers -->
-    <section id="customer-list">
-      <h2>All Customers</h2>
-      <div class="cards-container">
-        <!-- customer card -->
-        <div class="customer-card">
-          <p>name: John Smith</p>
-          <p>Customer Number: ETUR-CN-12345</p>
-        </div>
-      </div>
-    </section>
+    <main>
+        <section id="add-customer">
+            <h2>إضافة عميل جديد</h2>
+            <form id="customer-form">
+                <label for="customer-name">اسم العميل:</label>
+                <input type="text" id="customer-name" name="customer-name" required>
 
-    <!-- add customer -->
-    <section id="add-customer">
-      <h2>Add New Customer</h2>
-      <form id="customer-form">
-        <label for="customer-name">Customer Name:</label>
-        <input type="text" id="customer-name" name="customer-name" required>
-        <label for="customer-number">Kundennummer:</label>
-        <input type="text" id="customer-number" name="customer-number" required>
-        <button type="submit">Add Customer</button>
-      </form>
-    </section>
+                <label for="customer-number">رقم العميل:</label>
+                <input type="text" id="customer-number" name="customer-number" required>
 
-    <!-- Verify Customer Number -->
-    <section id="validate-customer">
-      <h2>Verify Customer Number</h2>
-      <form id="validate-form">
-        <label for="validate-number"> Enter Customer Number:</label>
-        <input type="text" id="validate-number" name="validate-number" required>
-        <button type="submit">Verify</button>
-      </form>
-    </section>
-  </main>
+                <button type="submit">إضافة عميل</button>
+            </form>
+        </section>
 
-  <!-- page footer -->
-  <footer>
-    <p>© 2025 All Rights Reserved</p>
-  </footer>
+        <section id="check-customer">
+            <h2>التحقق من رقم العميل</h2>
+            <form id="check-form">
+                <label for="check-number">رقم العميل:</label>
+                <input type="text" id="check-number" name="check-number" required>
 
-  <script src="./../services/customer-number-server/scripts.js"></script>
+                <button type="submit">تحقق</button>
+            </form>
+            <p id="check-result"></p>
+        </section>
+
+        <section id="customer-list">
+            <h2>قائمة العملاء</h2>
+            <div class="customer-cards">
+                <!-- هنا سيتم عرض بطاقات العملاء -->
+                <div class="customer-cards">
+                    <div class="customer-card">
+                        <h3>اسم العميل: محمد أحمد</h3>
+                        <p>رقم العميل: 12345</p>
+                    </div>
+                    <div class="customer-card">
+                        <h3>اسم العميل: علي محمود</h3>
+                        <p>رقم العميل: 67890</p>
+                    </div>
+                    <!-- يمكنك إضافة المزيد من البطاقات هنا -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 ETUR للبرمجيات. جميع الحقوق محفوظة.</p>
+    </footer>
 </body>
 </html>
