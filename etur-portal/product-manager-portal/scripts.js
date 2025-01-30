@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportsList = document.getElementById('reports-list');
     const reportDetails = document.getElementById('report-details');
     const backToReportsButton = document.getElementById('back-to-reports');
+    const reportLogout= document.getElementById('logout');
+
+    //log out
+    document.getElementById('logout').addEventListener('click', () => {
+        localStorage.removeItem('customerId'); // Clear session
+        window.location.href = '../customer-portal/index.html'; // Redirect to login page
+    });
 
     // View reports
     async function fetchAndDisplayReports() {
@@ -47,6 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
         reportDetailsSection.classList.add('hidden');
         reportsSection.classList.remove('hidden');
     });
+
+    // Log out
+   reportLogout.addEventListener('click', () => {
+        localStorage.removeItem('customerId'); // Clear session
+        window.location.href = './../customer-prtal/index.html'; // Redirect to login page
+    });
+
+    // const customerId = localStorage.getItem('customerId');
+    // if (!customerId) {
+    //     window.location.href = './../customer-prtal/index.html'; // Redirect to login if not logged in
+    // } else {
+    //     fetchAndDisplayReports();
+    // }
 
     fetchAndDisplayReports();
 });

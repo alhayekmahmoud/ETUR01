@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportDetails = document.getElementById('report-details');
     const backToReportsButton = document.getElementById('back-to-reports');
 
+    const gotoproductmanager = document.getElementById('go-to-product-manager');
+
     let currentCustomerId = null;
 
     // Log in
@@ -27,10 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
             currentCustomerId = customerId;
             loginSection.classList.add('hidden');
             reportsSection.classList.remove('hidden');
+            gotoproductmanager.classList.remove('hidden');
             fetchAndDisplayReports();
         } else {
             document.getElementById('login-error').textContent = 'Customer number is invalid.';
         }
+    });
+
+    
+    // Log out
+    document.getElementById('logout').addEventListener('click', () => {
+        localStorage.removeItem('customerId'); // Clear session
+        window.location.href = 'index.html'; // Redirect to login page
     });
 
     // Create new report
