@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const createReportSection = document.getElementById('create-report-section');
     const reportDetailsSection = document.getElementById('report-details-section');
     const loginForm = document.getElementById('login-form');
+    const logout = document.getElementById('logout');
+    const createReportPage= document.getElementById('create-report');
     const createReportForm = document.getElementById('create-report-form');
     const reportsList = document.getElementById('reports-list');
     const reportDetails = document.getElementById('report-details');
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gotoproductmanager = document.getElementById('go-to-product-manager');
 
-    let currentCustomerId = null;
+    let currentCustomerId = document.getElementById('customer-id').value;
 
     // Log in
     loginForm.addEventListener('submit', async (e) => {
@@ -38,9 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // Log out
-    document.getElementById('logout').addEventListener('click', () => {
+    logout.addEventListener('click', () => {
         localStorage.removeItem('customerId'); // Clear session
         window.location.href = 'index.html'; // Redirect to login page
+    });
+
+    
+    // create Report Page
+    createReportPage.addEventListener('click', () => {
+        localStorage.removeItem('customerId'); // Clear session
+        loginSection.classList.add('hidden');
+        createReportSection.classList.remove('hidden');
+       // window.location.href = 'createReport.html'; // Redirect to login page
     });
 
     // Create new report
