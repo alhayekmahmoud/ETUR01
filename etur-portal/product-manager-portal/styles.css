@@ -13,19 +13,32 @@ header {
 }
 
 nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spreads items to both sides */
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
+.logout {
+    margin-right: auto; /* Pushes "Log out" to the left */
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Spaces out the navigation items */
 }
 
 nav ul li a {
-    color: #fff;
     text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background:none;
+    border-radius: 5px;
 }
+
 
 .hidden {
     display: none;

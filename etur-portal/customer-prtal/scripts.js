@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportDetailsSection = document.getElementById('report-details-section');
     const loginForm = document.getElementById('login-form');
     const logout = document.getElementById('logout');
+    const createReport = document.getElementById('create-report');
+    const viewReports = document.getElementById('view-reports');
     const createReportPage= document.getElementById('create-report');
     const createReportForm = document.getElementById('create-report-form');
     const reportsList = document.getElementById('reports-list');
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentCustomerId = customerId;
             loginSection.classList.add('hidden');
             reportsSection.classList.remove('hidden');
+            viewReports.classList.remove('hidden');
             gotoproductmanager.classList.remove('hidden');
             fetchAndDisplayReports();
         } else {
