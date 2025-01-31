@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportsList = document.getElementById('reports-list');
     const reportDetails = document.getElementById('report-details');
     const backToReportsButton = document.getElementById('back-to-reports');
+    const backToCustomerPortal = document.getElementById('back-to-customer-portal');
     const reportLogout= document.getElementById('logout');
 
-    //log out
-    document.getElementById('logout').addEventListener('click', () => {
-        localStorage.removeItem('customerId'); // Clear session
-        window.location.href = '../customer-portal/index.html'; // Redirect to login page
+    //back To Customer Portal
+    backToCustomerPortal.addEventListener('click', () => {
+    //     localStorage.removeItem('customerId'); // Clear session
+        window.location.href = './../customer-prtal/index.html'; // Redirect to login page
     });
 
     // View reports

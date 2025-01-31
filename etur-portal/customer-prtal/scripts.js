@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loginSection.classList.add('hidden');
             reportsSection.classList.remove('hidden');
             viewReports.classList.remove('hidden');
+            createReport.classList.remove('hidden');
             gotoproductmanager.classList.remove('hidden');
             fetchAndDisplayReports();
         } else {
