@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reportDetailsSection = document.getElementById('report-details-section');
     const loginForm = document.getElementById('login-form');
     const logout = document.getElementById('logout');
+    const home = document.getElementById('home');
     const createReport = document.getElementById('create-report');
     const viewReports = document.getElementById('view-reports');
     const createReportPage= document.getElementById('create-report');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentCustomerId = customerId;
             loginSection.classList.add('hidden');
             reportsSection.classList.remove('hidden');
-            viewReports.classList.remove('hidden');
+            // viewReports.classList.remove('hidden');
             createReport.classList.remove('hidden');
             gotoproductmanager.classList.remove('hidden');
             fetchAndDisplayReports();
@@ -42,6 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+     // Home
+     home.addEventListener('click', () => {
+        localStorage.removeItem('customerId'); // Clear session
+        window.location.href = './../../src/website/index.html'; // Redirect to login page
+    });
     
     // Log out
     logout.addEventListener('click', () => {
