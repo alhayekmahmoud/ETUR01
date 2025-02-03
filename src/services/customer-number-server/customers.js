@@ -1,65 +1,31 @@
-const customers = []; // تخزين بيانات العملاء محليًا
+// customers.js
+const customers = [];
 
-// إضافة عميل جديد
-export const createCustomer = (name, id) => {
-  const newCustomer = { name, id };
-  customers.push(newCustomer);
-  return newCustomer;
-};
+export function getAllCustomers() {
+    return customers;
+}
 
-// إرجاع جميع العملاء
-export const getAllCustomers = () => customers;
+export function createCustomer(name, customerNumber) {
+    const customer = { name, customerNumber };
+    customers.push(customer);
+    return customer;
+}
 
-// إرجاع عميل معين
-export const getCustomerById = (id) => customers.find((c) => c.id === id);
+export function getCustomerByNumber(customerNumber) {
+    return customers.find(customer => customer.customerNumber === customerNumber);
+}
 
-// حذف عميل
-export const deleteCustomerById = (id) => {
-  const index = customers.findIndex((c) => c.id === id);
-  if (index !== -1) {
-    customers.splice(index, 1);
-    return true;
-  }
-  return false;
-};
-
-// التحقق من صحة رقم العميل
-export const isValidCustomerNumber = (id) => /ETUR-CN-\w+/.test(id);
-
-// تعريف المسارات
-export async function routes(fastify) {
-  // إرجاع جميع العملاء
-  fastify.get("/customers", async (request, reply) => {
-    reply.send(getAllCustomers());
-  });
-
-  // إرجاع عميل معين
-  fastify.get("/customers/:id", async (request, reply) => {
-    const customer = getCustomerById(request.params.id);
-    if (!customer) {
-      return reply.status(404).send({ error: "Customer not found" });
+export function deleteCustomerByNumber(customerNumber) {
+    const index = customers.findIndex(customer => customer.customerNumber === customerNumber);
+    if (index !== -1) {
+        return customers.splice(index, 1)[0];
     }
-    reply.send(customer);
-  });
+    return null;
+}
 
-  // إضافة عميل جديد
-  fastify.post("/customers", async (request, reply) => {
-    const { name, id } = request.body;
-
-    if (!isValidCustomerNumber(id)) {
-      return reply.status(400).send({ error: "Invalid customer number format" });
-    }
-
-    const newCustomer = createCustomer(name, id);
-    reply.status(201).send(newCustomer);
-  });
-
-  // حذف عميل
-  fastify.delete("/customers/:id", async (request, reply) => {
-    const success = deleteCustomerById(request.params.id);
-    if (!success) {
-      return reply.status(404).send({ error: "Customer not found" });
-    }
-    reply.send({ message: "Customer deleted successfully" });
-  });
+export function validateCustomerNumber(customerNumber) {
+    const pattern = /^ETUR-CN-\d+$/;
+    const isValid = pattern.test(customerNumber);
+    const exists = customers.some(customer => customer.customerNumber === customerNumber);
+    return { isValid, exists };
 }

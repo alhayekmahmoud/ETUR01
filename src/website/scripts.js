@@ -1,87 +1,90 @@
-const API_BASE_URL = "http://localhost:3000"; // Server address
-// 1. add a new customer
-const addCustomerForm = document.getElementById("customer-form");
-const addMessage = document.getElementById("add-message");
+// script.js
+const API_URL = 'http://localhost:3000';
 
-addCustomerForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  
-  const name = document.getElementById("customer-name").value;
-  const number = document.getElementById("customer-number").value;
+// UI elements
+const customerForm = document.getElementById('customer-form');
+const customerNameInput = document.getElementById('customer-name');
+const customerNumberInput = document.getElementById('customer-number');
+const customerList = document.querySelector('.customer-cards');
+const checkForm = document.getElementById('check-form');
+const checkNumberInput = document.getElementById('check-number');
+const checkResult = document.getElementById('check-result');
+const goToCustomerPortal = document.getElementById('go-to-customer-portal');
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/customers`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, number }),
+
+
+  //go To Customer Portal
+  goToCustomerPortal.addEventListener('click', () => {    
+        window.location.href = './../../etur-portal/customer-prtal/index.html'; // Redirect to login page
     });
 
-    if (response.ok) {
-      addMessage.textContent = "the customer had been added!";
-      addMessage.className = "message success";
-      fetchCustomers(); // refrish the customers list  
-    } else {
-      throw new Error("fult to add custmer!");
-    }
-  } catch (error) {
-    addMessage.textContent = error.message;
-    addMessage.className = "message error";
-  }
 
-  addMessage.style.display = "block";
+// Add a new customer
+customerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = customerNameInput.value;
+    const customerNumber = customerNumberInput.value;
+
+    try {
+        const response = await fetch(`${API_URL}/customers`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, customerNumber }),
+        });
+        if (response.ok) {
+            alert('Customer created successfully!');
+            customerNameInput.value = '';
+            customerNumberInput.value = '';
+            fetchAndDisplayCustomers();
+        } else {
+            alert('An error occurred while creating the customer.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 });
 
-// 2. desply all the customers
-const cardsContainer = document.getElementById("cards-container");
-
-async function fetchCustomers() {
-  try {
-    const response = await fetch(`${API_BASE_URL}/customers`);
-    // const response = await fetch(`${API_BASE_URL}/customers`);
-    const customers = await response.json();
-    cardsContainer.innerHTML = "";
-
-    customers.forEach((customer) => {
-      const card = document.createElement("div");
-      card.className = "customer-card";
-      card.innerHTML = `
-        <p>name: ${customer.name}</p>
-        <p> customer number: ${customer.number}</p>
-      `;
-      cardsContainer.appendChild(card);
-    });
-  } catch (error) {
-    console.error("fult to get the customer :", error);
-  }
+// Display all customers
+async function fetchAndDisplayCustomers() {
+    try {
+        const response = await fetch(`${API_URL}/customers`);
+        const customers = await response.json();
+        customerList.innerHTML = ''; // Clear current list
+        customers.forEach(customer => {
+            const card = document.createElement('div');
+            card.className = 'customer-card';
+            card.innerHTML = `
+                <h3>Customer Nam: ${customer.name}</h3>
+                <p>Customer Number: ${customer.customerNumber}</p>
+            `;
+            customerList.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-// 3. customer number veryfiction 
-const validateForm = document.getElementById("validate-form");
-const validateMessage = document.getElementById("validate-message");
+// Validate customer number
+checkForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const customerNumber = checkNumberInput.value;
 
-validateForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const number = document.getElementById("validate-number").value;
-
-  try {
-    const response = await fetch(`${API_BASE_URL}/customers/${number}`);
-    const result = await response.json();
-
-    if (result.exists) {
-      validateMessage.textContent = "  the customer number is exist!";
-      validateMessage.className = "message success";
-    } else {
-      validateMessage.textContent = "  the customer number is not found .";
-      validateMessage.className = "message error";
+    try {
+        const response = await fetch(`${API_URL}/validate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ customerNumber }),
+        });
+        const result = await response.json();
+        if (result.isValid) {
+            checkResult.textContent = result.exists ? 'The customer number is valid and exists in the system.' : 'The customer number is valid but does not exist in the system.';
+        } else {
+            checkResult.textContent = 'The customer number is invalid.';
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
-  } catch (error) {
-    validateMessage.textContent = "there is an error duering veryfiction .";
-    validateMessage.className = "message error";
-  }
-
-  validateMessage.style.display = "block";
 });
 
-// get the customers when the page is loaded    
-fetchCustomers();
+// Load customers when the page opens
+document.addEventListener('DOMContentLoaded', fetchAndDisplayCustomers);

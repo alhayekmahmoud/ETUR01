@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Report</title>
+    <link rel="stylesheet" href="create.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create Report Form -->
+    <section id="create-report-section">
+        <h2>Create New Report</h2>
+        <form id="create-report-form">
+            <div>
+                <label for="report-type">Report Type:</label>
+                <select id="report-type" name="report-type" required>
+                    <option value="Bug">Bug</option>
+                    <option value="Feature Request">Feature Request</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="report-description">Description:</label>
+                <textarea id="report-description" name="report-description" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit Report</button>
+        </form>
+    </section>
+
+    <!-- Reports Section (Hidden by default) -->
+    <section id="reports-section" class="hidden">
+        <h2>Reports</h2>
+        <div id="reports-list">
+            <!-- Reports will be displayed here -->
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+
+    
+</body>
+</html>

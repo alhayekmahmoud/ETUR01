@@ -1,54 +1,64 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Customer Number Management System </title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Number System - ETUR </title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- page header  -->
-  <header>
-    <h1> Customer Number Management System  </h1>
-  </header>
+    <header>
+        <h1>Customer Number System - ETUR </h1>
+        <!-- <h1>Customer Portal - ETUR</h1> -->
+        <nav>
+            <ul>                
+                <div class="nav-links">
+                    <li><a href="#" id="go-to-customer-portal" class="hidden">Customer Portal</a></li>
+                    <!-- <li><a href="#" id="view-reports" class="hidden">View reports</a></li>
+                    <li><a href="./../product-manager-portal/index.html" id="go-to-product-manager" class="hidden">Product Manager</a></li> -->
+                </div>
+                <li class="logout"><a href="#" id="logout">Log out</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!--  page body -->
-  <main>
-    <!-- desplay all customers -->
-    <section id="customer-list">
-      <h2> all customers </h2>
-      <div id="cards-container" class="cards-container"></div>
-    </section>
+    <main>
+        <section id="add-customer">
+            <h2>Add a New Customer</h2>
+            <form id="customer-form">
+                <label for="customer-name">Customer Name</label>
+                <input type="text" id="customer-name" name="customer-name" required>
 
-    <!-- add a new customer -->
-    <section id="add-customer">
-      <h2>add a new customer  </h2>
-      <form id="customer-form">
-        <label for="customer-name">Customer name  :</label>
-        <input type="text" id="customer-name" name="customer-name" required>
-        <label for="customer-number"> Customer Number :</label>
-        <input type="text" id="customer-number" name="customer-number" required>
-        <button type="submit">Add Customer </button>
-      </form>
-      <p id="add-message" class="message"></p>
-    </section>
+                <label for="customer-number">Customer Number</label>
+                <input type="text" id="customer-number" name="customer-number" required>
 
-    <!--  Verify Customer Number   -->
-    <section id="validate-customer">
-      <h2> Verify Customer Number  </h2>
-      <form id="validate-form">
-        <label for="validate-number"> Enter Customer Number :</label>
-        <input type="text" id="validate-number" name="validate-number" required>
-        <button type="submit">Verify</button>
-      </form>
-      <p id="validate-message" class="message"></p>
-    </section>
-  </main>
+                <button type="submit">Add A Customer</button>
+            </form>
+        </section>
 
-  <!-- page footer  -->
-  <footer>
-    
-  </footer>
+        <section id="check-customer">
+            <h2>Customer Number Validation</h2>
+            <form id="check-form">
+                <label for="check-number">Customer Naumber</label>
+                <input type="text" id="check-number" name="check-number" required>
 
+                <button type="submit">Validation</button>
+            </form>
+            <p id="check-result"></p>
+        </section>
+
+        <section id="customer-list">
+            <h2>Customers list</h2>
+            <div class="customer-cards">
+                <!-- Customer cards will be displayed here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 ETUR </p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
