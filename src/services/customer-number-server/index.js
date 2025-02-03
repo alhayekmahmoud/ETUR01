@@ -9,11 +9,11 @@ import {
     deleteCustomerByNumber,
     validateCustomerNumber
 } from './customers.js';
-=======
-import Fastify from 'fastify';
-import cors from '@fastify/cors';
 
-const fastify = Fastify({ logger: true });
+// import Fastify from 'fastify';
+// import cors from '@fastify/cors';
+
+// const fastify = Fastify({ logger: true });
 
 
 import {
@@ -93,11 +93,6 @@ const customerSchema = {
     }
 };
 
-// fastify.post('/customers', customerSchema, async (request, reply) => {
-//     const { name, customerNumber } = request.body;
-//     const customer = createCustomer(name, customerNumber);
-//     return customer;
-// });
 
 
 
@@ -197,23 +192,6 @@ const start = async () => {
 };
 
 start();
-=======
-  origin: "*", 
-});
 
 
-fastify.get('/', async (request, reply) => {
-  return { message: 'Welcome to the Customer Number System!' };
-});
-
-
-const start = async () => {
-  try {
-    await fastify.listen({port: 3000});
-    console.log("Server is running at http://localhost:3000/");
-  } catch (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-}
 
