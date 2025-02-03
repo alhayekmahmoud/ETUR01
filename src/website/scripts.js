@@ -9,6 +9,15 @@ const customerList = document.querySelector('.customer-cards');
 const checkForm = document.getElementById('check-form');
 const checkNumberInput = document.getElementById('check-number');
 const checkResult = document.getElementById('check-result');
+const goToCustomerPortal = document.getElementById('go-to-customer-portal');
+
+
+
+  //go To Customer Portal
+  goToCustomerPortal.addEventListener('click', () => {    
+        window.location.href = './../../etur-portal/customer-prtal/index.html'; // Redirect to login page
+    });
+
 
 // Add a new customer
 customerForm.addEventListener('submit', async (e) => {
