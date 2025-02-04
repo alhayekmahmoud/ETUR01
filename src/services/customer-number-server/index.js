@@ -34,6 +34,7 @@ const fastify = Fastify({ logger: true });
 fastify.register(cors, {
 
     origin: '*', //Allows all origins  )
+    methods: ['GET', 'POST', 'PUT', 'DELETE']  // Allow DELETE method
 });
 // Define customer routes
 fastify.get('/customers', async (request, reply) => {
@@ -62,13 +63,44 @@ fastify.post('/customers', async (request, reply) => {
 
 fastify.delete('/customers/:customerNumber', async (request, reply) => {
     const { customerNumber } = request.params;
-    const deletedCustomer = deleteCustomerByNumber(customerNumber);
+
+    // Ensure deleteCustomerByNumber is asynchronous if needed
+    const deletedCustomer = await deleteCustomerByNumber(customerNumber);  
+
     if (deletedCustomer) {
-        return deletedCustomer;
+        reply.send({ message: 'Customer deleted successfully', data: deletedCustomer });
     } else {
         reply.code(404).send({ message: 'Customer not found' });
     }
 });
+
+
+
+// fastify.delete('/customers/:customerNumber', async (request, reply) => {
+//     const { customerNumber } = request.params;
+//     const deletedCustomer = deleteCustomerByNumber(customerNumber);
+//     if (deletedCustomer) {
+//         return deletedCustomer;
+//     } else {
+//         reply.code(404).send({ message: 'Customer not found' });
+//     }
+// });
+
+
+// fastify.delete('/delete', async (request, reply) => {
+//     const { customerNumber } = request.body;
+
+//     if (customerNumber) {
+//         reply.send({ success: true, message: 'Customer deleted successfully.' });
+//     } else {
+//         reply.code(400).send({ success: false, message: 'Customer number is required.' });
+//     }
+// });
+
+// fastify.listen({ port: 3000 }, (err) => {
+//     if (err) throw err;
+//     console.log('Server running on http://localhost:3000');
+// });
 
 fastify.post('/validate', async (request, reply) => {
     const { customerNumber } = request.body;

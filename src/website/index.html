@@ -23,6 +23,7 @@
     </header>
 
     <main>
+        <!-- Add a New Customer -->
         <section id="add-customer">
             <h2>Add a New Customer</h2>
             <form id="customer-form">
@@ -36,6 +37,7 @@
             </form>
         </section>
 
+        <!-- Customer Number Validation -->
         <section id="check-customer">
             <h2>Customer Number Validation</h2>
             <form id="check-form">
@@ -47,6 +49,19 @@
             <p id="check-result"></p>
         </section>
 
+         <!-- Delete Customer -->
+        <section id="delete-customer">
+            <h2>Delete Customer</h2>
+            <form id="delete-form">
+                <label for="delete-customer-number">Customer Naumber</label>
+                <input type="text" id="delete-customer-number" name="delete-customer-number" required>
+
+                <button type="submit">Delete</button>
+            </form>
+            <p id="delete-result"></p>
+        </section>
+
+        <!-- Customers list -->
         <section id="customer-list">
             <h2>Customers list</h2>
             <div class="customer-cards">

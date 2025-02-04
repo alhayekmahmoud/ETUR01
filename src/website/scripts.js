@@ -9,6 +9,9 @@ const customerList = document.querySelector('.customer-cards');
 const checkForm = document.getElementById('check-form');
 const checkNumberInput = document.getElementById('check-number');
 const checkResult = document.getElementById('check-result');
+const deleteForm = document.getElementById('delete-form');
+const deleteCustomerNumberInput = document.getElementById('delete-customer-number');
+const deleteResult = document.getElementById('delete-result');
 const goToCustomerPortal = document.getElementById('go-to-customer-portal');
 
 
@@ -85,6 +88,42 @@ checkForm.addEventListener('submit', async (e) => {
         console.error('Error:', error);
     }
 });
+
+// delete number
+// Ensure elements are selected correctly
+if (deleteForm) {
+    deleteForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const customerNumber = deleteCustomerNumberInput.value.trim();
+
+        if (!customerNumber) {
+            alert('Please enter a valid customer number.');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_URL}/customers/${customerNumber}`, {
+                method: 'DELETE',
+                // headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.message);  // Logs: "Customer deleted successfully"
+            } else if (response.status === 404) {
+                alert('Customer not found.');
+            } else {
+                alert('An unexpected error occurred.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    document.addEventListener('DOMContentLoaded', fetchAndDisplayCustomers);
+} else {
+    console.error('Delete form not found in the DOM.');
+    document.addEventListener('DOMContentLoaded', fetchAndDisplayCustomers);
+}
 
 // Load customers when the page opens
 document.addEventListener('DOMContentLoaded', fetchAndDisplayCustomers);

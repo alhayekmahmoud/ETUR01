@@ -13,7 +13,7 @@ Create a New Report
 Request: POST http://localhost:3000/reports
 Body (JSON):{
   "category": "Feedback",
-  "customerId": "1234",
+  "customerId": "ETUR-CN-12341",
   "description": "This is a description",
   "labels": ["label1", "label2"],
   "owner": "Product Manager",
